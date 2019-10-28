@@ -10,7 +10,7 @@ while(again==true){
 	var answer=Math.floor(Math.random()*100)+1;
 	console.log(answer);
 	while(guess!=answer){
-		guess=prompt("Guess my number between 1-100! Press Q to quit!");
+		guess=prompt("Guess my number between 1-100! Press q to quit!");
 		turns++;
 		if(guess=="q"){
 			alert("Goodbye!");
