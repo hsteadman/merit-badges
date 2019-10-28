@@ -43,7 +43,7 @@ function validate(guess){
 	}
 }
 
-function gameStats(turns,totalTurns){
+function gameStats(turns){
 	alert("You guessed it in "+turns+" turns! Great job!");
 	totalTurns+=turns;
 	var averageTurns=totalTurns/games;
