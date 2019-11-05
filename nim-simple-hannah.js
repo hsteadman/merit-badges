@@ -1,5 +1,5 @@
 /* nim simple by hannah */
-
+// this code is broken right now
 /* globals*/
 var games=0;
 var again=true;
