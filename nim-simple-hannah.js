@@ -51,14 +51,13 @@ while(again==false){
 function userTurn(turn){
 	turn=prompt("Input number 1-3");
 	if(turn>0&&turn<4){
+		alert("Your count: "+turn);
 		return true;
 	}
 	else{
 		alert("Number out of range, please try again.");
 		return false;
 	}
-	alert("Your count: "+turn);
-	return turn;
 }
 
 function CPUTurn(turn){
