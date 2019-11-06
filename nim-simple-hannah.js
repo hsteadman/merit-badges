@@ -43,20 +43,17 @@ while(again==true){
 		}
 	}
 }
-if(again==false){
-	break;
-}
 
 /* functions */
 function userTurn(turn){
-	turn=prompt("Input number 1-3");
-	if(turn>0&&turn<4){
+	
+	while(turn<1||turn>3){
+		turn=prompt("Input number 1-3");
 		alert("Your count: "+turn);
-		return true;
-	}
-	else{
-		alert("Number out of range, please try again.");
-		return false;
+		else{
+			alert("Number out of range, please try again.");
+		}
+		return turn;
 	}
 }
 
