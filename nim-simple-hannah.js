@@ -15,7 +15,7 @@ while(again==true){
 	while(next==0){
 		turn=CPUTurn();
 		count+=turn;
-		alert("Current count: "+count);
+		alert("Total count: "+count);
 		if(count<21){
 			turns++;
 			next++;
@@ -30,7 +30,7 @@ while(again==true){
 	while(next==1){
 		turn=userTurn();
 		count+=turn;
-		alert("Count: "+count);
+		alert("Total count: "+count);
 		if(count<21){
 			turns++;
 			next--;
@@ -57,20 +57,23 @@ function userTurn(turn){
 		alert("Number out of range, please try again.");
 		return false;
 	}
+	alert("Your count: "+turn);
+	return turn;
 }
 
 function CPUTurn(turn){
 	turn=Math.floor(Math.random()*3)+1;
+	alert("Computer count: "+turn);
 	return turn;
 }
 
 /*
 function nextSwitch(next){
 	if(next==0){
-		next++;
+		return 1;
 	}
 	else if(next==1){
-		next--;
+		return 0;
 	}
 }
 */
