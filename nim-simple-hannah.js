@@ -43,7 +43,7 @@ while(again==true){
 		}
 	}
 }
-while(again==false){
+if(again==false){
 	break;
 }
 
