@@ -1,5 +1,5 @@
 /* nim simple by hannah */
-// this code is broken right now
+//this code is broken right now
 /* globals*/
 var games=0;
 var again=true;
@@ -12,34 +12,37 @@ while(again==true){
 	count=0;
 	turns=0;
 	next=0;
-	if(next==0){
+	while(next==0){
 		turn=CPUTurn();
 		count+=turn;
-		alert("Count: "+count);
 		if(count<21){
+			alert("Count: "+count);
 			turns++;
-			nextSwitch();
+			nextSwitch(next);
 		}
 		else if(count>=21){
-			winner();
+			winner(next);
 			games++;
 			playAgain(again);
 		}
 	}
-	if(next==1){
+	while(next==1){
 		turn=userTurn();
 		count+=turn;
-		alert("Count: "+count);
 		if(count<21){
+			alert("Count: "+count);
 			turns++;
-			nextSwitch();
+			nextSwitch(next);
 		}
 		else if(count>=21){
-			winner();
+			winner(next);
 			games++;
 			playAgain(again);
 		}
 	}
+}
+while(again==false){
+	break;
 }
 
 /* functions */
@@ -61,10 +64,10 @@ function CPUTurn(turn){
 
 function nextSwitch(next){
 	if(next==0){
-		return 1;
+		next++;
 	}
 	else if(next==1){
-		return 0;
+		next--;
 	}
 }
 
