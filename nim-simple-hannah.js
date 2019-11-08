@@ -5,14 +5,12 @@ var again=true;
 var next=0;
 var count=0;
 var turn=0;
-var turns=0;
 /* main */
 while(again==true){
+	next=games%2;
+	games++;
 	alert("Game "+games+" start!");
 	count=0;
-	turn=0;
-	turns=0;
-	next=games%2;
 	while(count<21){
 		if(next==0){
 			turn=CPUTurn();
@@ -44,14 +42,18 @@ function CPUTurn(){
 }
 
 function userTurn(){
-	turn=prompt("Pick a number 1-3");
-	if(turn>0&&turn<4){
-		alert("You count "+turn);
-		return Number(turn);
+	var goodTurn=false;
+	while(goodTurn==false){
+		turn=prompt("Pick a number 1-3");
+		if(turn>0&&turn<4){
+			goodTurn=true;
+			alert("You count "+turn);
+		}
+		else{
+			alert("Number is out of range, try again");
+		}
 	}
-	else{
-		alert("Guess is out of range, try again");
-	}
+	return Number(turn);
 }
 
 function nextSwitch(next){
