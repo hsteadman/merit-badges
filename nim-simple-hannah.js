@@ -1,85 +1,67 @@
 /* nim simple by hannah */
-//broken code
-/* globals*/
+/* globals */
 var games=0;
 var again=true;
-var turn=0;
-var count=0;
-var turns=0;
 var next=0;
+var count=0;
+var turn=0;
+var turns=0;
 /* main */
 while(again==true){
+	alert("Game "+games+" start!");
 	count=0;
+	turn=0;
 	turns=0;
 	next=games%2;
-	while(next==0){
-		turn=CPUTurn();
-		count+=turn;
-		alert("Total count: "+count);
-		if(count<21){
-			turns++;
-			next++;
-			//nextSwitch(next);
+	while(count<21){
+		if(next==0){
+			turn=CPUTurn();
+			count+=turn;
+			alert("The count is now "+count);
+			next=nextSwitch(next);
 		}
-		if(count>=21){
-			winner(next);
-			games++;
-			playAgain(again);
+		else{
+			turn=userTurn();
+			count+=turn;
+			alert("The count is now "+count);
+			next=nextSwitch(next);
 		}
 	}
-	while(next==1){
-		turn=userTurn();
-		count+=turn;
-		alert("Total count: "+count);
-		if(count<21){
-			turns++;
-			next--;
-			//nextSwitch(next);
-		}
-		if(count>=21){
-			winner(next);
-			games++;
-			playAgain(again);
-		}
+	declareWinner();
+	games++;
+	alert("Games played: "+games);
+	if(playAgain()==false){
+		break;
 	}
 }
+alert("Thanks for playing Nim with me!");
 
 /* functions */
-function userTurn(turn){
-	
-	while(turn<1||turn>3){
-		turn=prompt("Input number 1-3");
-		alert("Your count: "+turn);
-		else{
-			alert("Number out of range, please try again.");
-		}
-		return turn;
-	}
-}
-
-function CPUTurn(turn){
+function CPUTurn(){
 	turn=Math.floor(Math.random()*3)+1;
-	alert("Computer count: "+turn);
+	alert("CPU counts "+turn);
 	return turn;
 }
 
-/*
-function nextSwitch(next){
-	if(next==0){
-		return 1;
+function userTurn(){
+	turn=prompt("Pick a number 1-3");
+	if(turn>0&&turn<4){
+		alert("You count "+turn);
+		return turn;
 	}
-	else if(next==1){
-		return 0;
+	else{
+		alert("Guess is out of range, try again.");
 	}
 }
-*/
 
-function winner(next){
+function nextSwitch(next){
 	if(next==0){
-		alert("You lose!");
+		next=1;
+		return next;
 	}
-	else if(next==1){
-		alert("You win!");
+	else{
+		next=0;
+		return next;
 	}
 }
 
@@ -90,5 +72,62 @@ function playAgain(again){
 	}
 	else{
 		return false;
+	}
+}
+
+function declareWinner(){
+	if(next==0){
+		alert("You lose!");
+	}
+	else{
+		alert("You win!");
+	}
+}
+
+function CPUTurn(turn){
+	turn=Math.floor(Math.random()*3)+1;
+	alert("CPU counts "+turn);
+	return turn;
+}
+
+function userTurn(turn){
+	turn=prompt("Pick a number 1-3");
+	if(turn>0&&turn<4){
+		alert("You count "+turn);
+		return Number(turn);
+	}
+	else{
+		alert("Guess is out of range, try again");
+	}
+}
+
+function nextSwitch(next){
+	if(next==0){
+		next=1;
+		return next;
+	}
+	else{
+		next=0;
+		return next;
+	}
+}
+
+function declareWinner(){
+	if(next==0){
+		alert("You lose!");
+	}
+	else{
+		alert("You win!");
+	}
+}
+
+function playAgain(){
+	again=prompt("Play again? (y/n)"){
+		if(again=="y"){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 }
