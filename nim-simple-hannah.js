@@ -47,7 +47,7 @@ function userTurn(){
 	turn=prompt("Pick a number 1-3");
 	if(turn>0&&turn<4){
 		alert("You count "+turn);
-		return turn;
+		return Number(turn);
 	}
 	else{
 		alert("Guess is out of range, try again");
