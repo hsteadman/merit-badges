@@ -75,12 +75,11 @@ function declareWinner(){
 }
 
 function playAgain(again){
-	again=prompt("Play again? (y/n)"){
-		if(again=="y"){
-			return true;
-		}
-		else{
-			return false;
-		}
+	again=prompt("Play again? (y/n)");
+	if(again=="y"){
+		return true;
+	}
+	else{
+		return false;
 	}
 }
