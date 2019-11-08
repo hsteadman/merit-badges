@@ -37,7 +37,6 @@ while(again==true){
 alert("Thanks for playing Nim with me!");
 
 /* functions */
-
 function CPUTurn(){
 	turn=Math.floor(Math.random()*3)+1;
 	alert("CPU counts "+turn);
