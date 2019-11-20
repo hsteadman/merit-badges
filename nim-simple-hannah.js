@@ -1,4 +1,4 @@
-/* nim simple by hannah */
+/* nim simple merit badge by hannah */
 /* globals */
 var games=0;
 var again=true;
@@ -15,18 +15,17 @@ while(again==true){
 		if(next==0){
 			turn=CPUTurn();
 			count+=turn;
-			alert("The count is now "+count);
+			alert("The count is now "+count+".");
 			next=nextSwitch(next);
 		}
 		else{
 			turn=userTurn();
 			count+=turn;
-			alert("The count is now "+count);
+			alert("The count is now "+count+".");
 			next=nextSwitch(next);
 		}
 	}
 	declareWinner();
-	games++;
 	alert("Games played: "+games);
 	if(playAgain()==false){
 		break;
@@ -37,7 +36,7 @@ alert("Thanks for playing Nim with me!");
 /* functions */
 function CPUTurn(){
 	turn=Math.floor(Math.random()*3)+1;
-	alert("CPU counts "+turn);
+	alert("CPU Counts "+turn+".");
 	return turn;
 }
 
@@ -47,10 +46,10 @@ function userTurn(){
 		turn=prompt("Pick a number 1-3");
 		if(turn>0&&turn<4){
 			goodTurn=true;
-			alert("You count "+turn);
+			alert("You count "+turn+".");
 		}
 		else{
-			alert("Number is out of range, try again");
+			alert("Number is out of range, try again.");
 		}
 	}
 	return Number(turn);
