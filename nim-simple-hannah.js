@@ -39,8 +39,9 @@ function CPUTurn(){
 	var turn=0;
 	while(goodTurn==false){
 		turn=Math.floor(Math.random()*3)+1;
-		if(turn==1||turn>1&&count+turn<21){
-			goodTurn=true;
+			if(turn>1&&Math.floor(turn)==turn){
+				goodTurn=true;
+			}
 		}
 	}
 	alert("CPU Counts "+turn+".");
@@ -51,7 +52,7 @@ function userTurn(){
 	var goodTurn=false;
 	while(goodTurn==false){
 		turn=prompt("Pick a number 1-3");
-		// add back
+		if(turn>0&&turn<4&&Math.floor(turn)==turn){
 			goodTurn=true;
 			alert("You count "+turn+".");
 		}
