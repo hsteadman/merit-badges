@@ -51,7 +51,7 @@ function userTurn(){
 	var goodTurn=false;
 	while(goodTurn==false){
 		turn=prompt("Pick a number 1-3");
-		if(turn>0&&turn<4&&Math.floor(turn)==turn){
+		// add back
 			goodTurn=true;
 			alert("You count "+turn+".");
 		}
