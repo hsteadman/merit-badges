@@ -35,11 +35,16 @@ alert("Thanks for playing Nim with me!");
 
 /* functions */
 function CPUTurn(){
-	turn=Math.floor(Math.random()*3)+1;
-	if(turn>1&&count+turn<22){
-		alert("CPU Counts "+turn+".");
-		return turn;
+	var goodTurn=false;
+	var turn=0;
+	while(goodTurn==false){
+		turn=Math.floor(Math.random()*3)+1;
+		if(turn==1||turn>1&&count+turn<21){
+			goodTurn=true;
+		}
 	}
+	alert("CPU Counts "+turn+".");
+	return turn;
 }
 
 function userTurn(){
