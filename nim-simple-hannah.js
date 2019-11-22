@@ -43,10 +43,9 @@ function CPUTurn(){
 				goodTurn=true;
 			}
 		}
+		alert("CPU Counts "+turn+".");
+		return turn;
 	}
-	alert("CPU Counts "+turn+".");
-	return turn;
-}
 
 function userTurn(){
 	var goodTurn=false;
