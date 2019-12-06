@@ -1,19 +1,21 @@
-/* nim simple merit badge by hannah */
+/* nim trainer merit badge by hannah */
 /* globals */
 var games=0;
 var again=true;
 var next=0;
 var count=0;
 var turn=0;
+var gameType=prompt("Game type Simple or Trainer?");
 /* main */
 while(again==true){
+	pickGame(gameType);
 	next=games%2;
 	games++;
 	alert("Game "+games+" start!");
 	count=0;
 	while(count<21){
 		if(next==0){
-			turn=CPUTurn();
+			turn=CPUTrainer(count);
 			count+=turn;
 			alert("The count is now "+count+".");
 			next=nextSwitch(next);
@@ -34,20 +36,33 @@ while(again==true){
 alert("Thanks for playing Nim with me!");
 
 /* functions */
-function CPUTurn(){
-	let turn=0;
-	if(count==19||count==20){
-		turn=1;
+function pickGame(gameType){
+	gameType=prompt("Game type Simple or Trainer?");
+	if(gameType==simple){
+		gameType=simple;
+		return gameType;
 	}
-	else if(count==18){
-		turn=Math.floor(Math.random()*2)+1;
+	else{
+		gameType=trainer;
+		return gameType;
+	}
+}
+
+function CPUTrainer(count){
+	let turn=0;
+	if(count%4!=0){
+		turn=4-(count%4);
+	}
+	else if(count==20){
+		turn=1;
 	}
 	else{
 		turn=Math.floor(Math.random()*3)+1;
 	}
-	alert("CPU Counts "+turn+".");
-	return turn;
-	}
+	alert("CPU counts "+turn);
+	count+=turn;
+	return count;
+}
 
 function userTurn(){
 	var goodTurn=false;
