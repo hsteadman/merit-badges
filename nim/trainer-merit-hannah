@@ -14,19 +14,19 @@ while(again==true){
 	var turn=0;
 	var next=games%2;
 	gameType=pickGame(gameType);
-	while(count<=20){
+	while(count<=21){
 		while(next==0&&gameType=="simple"){
-			count=CPUTurn(count);
+			CPUTurn(turn);
 			alert("Count is now "+count);
 			next=1;
 		}
 		while(next==0&&gameType=="trainer"){
-			count=CPUTrainer(count);
+			CPUTrainer(count);
 			alert("Count is now "+count);
 			next=1;
 		}
 		while(next==1){
-			count=userTurn(count);
+			userTurn(turn);
 			alert("Count is now "+count);
 			next=0;
 		}
@@ -38,19 +38,17 @@ alert("Thanks for playing Nim with me!");
 /* Functions */
 
 /* CPU Turn -- random turn but not purposely losing or going over 21 */
-function CPUTurn(count){
-	let goodTurn = false;
-	let turn=0;
-	while (goodTurn == false) {
-		turn = Math.floor(Math.random()*3)+1;
-		if (turn == 1 || turn > 1 && count+turn < 21) goodTurn = true;
+function CPUTurn(turn){
+	if(count+turn<21){
+		turn=Math.floor(Math.random()*3)+1;
 	}
 	alert("CPU counts "+turn);
-	count += turn;
+	count+=turn;
 	return count;
 }
 
-function CPUTrainer(count){
+function CPUTrainer(turn){
+	turn=0;
 	while(count%4==0){
 		if(count==20){
 			turn=1;
