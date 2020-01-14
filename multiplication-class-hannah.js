@@ -7,20 +7,27 @@
  * stop: boolean - start at false
  * again: boolean - start at true
  */ 
-var topRange=9;
-var bottomRange=1;
-var wrongAnswers=0;
+//var tRange=0;
+//var bRange=0;
+var wrong=0;
 var stop=false;
 var again=true;
+var questions=setup();
 var question=0;
-var questions=1;
+var x=Math.floor(Math.random()*6)+3;
+var y=Math.floor(Math.random()*6)+3;
+var equation=prompt(x+" + "+y+" = ?");
+var solution=x*y;
+
 /* main code 
  * use a while loop to keep calling main function while again = true. 
  */
-while(again==true){
+ 
+while(again==true&&stop==false){
 	main();
 }
 alert("Thanks for playing!");
+
 /* functions */
 
 /* function main
@@ -32,26 +39,16 @@ alert("Thanks for playing!");
  * @param none
  * @return again (boolean)
  */ 
+ 
 function main(){
-	setup();
-	for(question=1;question<=questions;question++){
+	for(let question=questioner();question<=questions;question++){
 		questioner();
 		userInput();
-		if(wrongAnswers==0){
-			alert("Charlie, you've won!");
-		}
-		else{
-			alert("You got "+wrongAnswers+" out of "+questions);
-		}
 	}
-	again=prompt("Do this again?");
-	if(again=="y"){
-		again=true;
-	}
-	else{
-		again=false;
-	}
+	alert("You did it! You got "+wrong+" out of "+questions);
+	again=confirm("Do this again?");
 }
+
 /* function setup
  * set bottomRange
  * set topRange
@@ -59,12 +56,15 @@ function main(){
  * @param: none
  * @return: questions
  */
+ 
  function setup(){
-	 let questions=prompt("How many questions?");
-	 let topRange=prompt("Highest factor?");
-	 let bottomRange=prompt("Lowest factor?");
+	 questions=parseInt(prompt("How many questions?"));
+	// tRange=parseInt(prompt("Highest factor?"));
+	// bRange=parseInt(prompt("Lowest factor?"));
+	alert("awawa");
 	 return questions;
  }
+ 
 /* function questioner 
  * generate X and Y factors
  * concatenate X & Y for equation (a string prompt)
@@ -74,15 +74,13 @@ function main(){
  * @param none
  * @return wrong
  */
+ 
 function questioner(){
-	var x=Math.floor(Math.random()*6)+3;
-	var y=Math.floor(Math.random()*6)+3;
-	var equation=prompt(x+" + "+y+" = ?");
-	var solution=x*y;
-	var wrong=0;
-	userInput(equation,solution);
+	userInput();
+	alert("wawawa");
 	return wrong;
 }
+
 /* function userInput
  * prompt the equation to the user, take input
  * if input equals "stop" set stop as true, otherwise
@@ -93,18 +91,19 @@ function questioner(){
  * @param none
  * @return wrong (integer, 0 or 1)
  */ 
-function userInput(equation,solution){
-	let answer=prompt(x+" + "+y+" = ?");
+ 
+function userInput(equation,solution,answer,x,y){
+	answer=prompt(equation);
 	if(answer=="stop"){
-		let stop=true;
+		again=false;
 	}
 	else if(answer==solution){
 		alert("Correct!");
-		wrong=0;
 	}
 	else{
 		alert("Incorrect!");
 		wrong++;
 	}
+	alert("ewaeweae");
 	return wrong;
 }
