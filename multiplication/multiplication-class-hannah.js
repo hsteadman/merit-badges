@@ -12,10 +12,7 @@
  * use a while loop to keep calling main function while again = true. 
  */
  
-while(again==true&&stop==false){
-	main();
-}
-alert("Thanks for playing!");
+main();
 
 /* functions */
 
@@ -30,12 +27,12 @@ alert("Thanks for playing!");
  */ 
 
 function main(){
-	var wrong=0; stop=false; again=true; question=0; x=Math.floor(Math.random()*6)+3; y=Math.floor(Math.random()*6)+3; equation=prompt(x+" + "+y+" = ?"); solution=x*y; tRange=0; bRange=0; wrongAnswers=0;
+	var wrong=0; stop=false; again=true; question=0; tRange=0; bRange=0; wrongAnswers=0;
 	var questions=setup();
-	for(let question=questioner();question<=questions;question++){
-		wrong+=questioner();
+	for(let question=1;question<=questions;question++){
+		wrongAnswers+=questioner();
 	}
-	endQuiz(again);
+	endQuiz(wrongAnswers);
 	
 	/* function setup
 	  * set bottomRange
@@ -49,7 +46,6 @@ function main(){
 		 bRange=parseInt(prompt("Lowest factor?"));
 		 tRange=parseInt(prompt("Highest factor?"));
 		 alert("Enter 'stop' to quit the program.");
-		console.log("setup");
 		 return questions;
 	}
 
@@ -66,7 +62,7 @@ function main(){
 		let wrong=0;
 		x=Math.floor(Math.random()*((tRange+1)-bRange))+bRange;
 		y=Math.floor(Math.random()*((tRange+1)-bRange))+bRange;
-		let equation=(x+" + "+y+" = ?");
+		let equation=(x+" * "+y+" = ?");
 		let solution=x*y;
 		wrong=userInput(equation,solution);
 		console.trace("Question "+question+": "+x+" * "+y+" with "+wrong+ "wrong.");
