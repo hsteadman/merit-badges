@@ -3,12 +3,12 @@
 var rpsWords=["r", "p", "s"];
 var setWinner=[[0,1,1][0,2,0],[1,0,0],[1,2,1],[2,1,0],[2,0,1]];
 var scoreKeeper=[0,0];
-var outOf=parseInt(prompt("Best out of?"));pChoice="";cChoice=null;turn=0;
+var outOf=parseInt(prompt("Best out of?"));pChoice="";cChoice=0;turn=0;
 
 main();
 
 function main(){
-	for(turn=0;turn<outOf;turn++){
+	for(turn=0;turn<=outOf;turn++){
 		userTurn();
 		cpuTurn();
 		if(pChoice==cChoice){
