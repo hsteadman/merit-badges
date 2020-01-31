@@ -108,10 +108,10 @@ function main(){
 	}
 	
 	function gameWinner(){
-		if(scoreKeeper[index]>[index]){
+		if(scoreKeeper[1>0]){
 			alert("You win!");
 		}
-		else if(scoreKeeper[index]<[index]){
+		else if(scoreKeeper[1<0]){
 			alert("Computer wins!");
 		}
 	}
