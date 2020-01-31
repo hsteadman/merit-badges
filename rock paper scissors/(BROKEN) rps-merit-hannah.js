@@ -1,9 +1,9 @@
 /* RPS Merit Badge Hannah Steadman */
 
 var rpsWords=["r", "p", "s"];
-var setWinner=[[0,1,1][0,2,0],[1,0,0],[1,2,1],[2,1,0],[2,0,1]];
+var setWinner=[[0,1,1],[0,2,0],[1,0,0],[1,2,1],[2,1,0],[2,0,1]];
 var scoreKeeper=[0,0];
-var outOf=parseInt(prompt("Best out of?"));pChoice=0;cChoice=0;turn=0;
+var outOf=parseInt(prompt("Best out of?"));pChoice=0;cChoice=0;turn=0;winner="";
 
 main();
 
@@ -69,54 +69,49 @@ function main(){
 	
 	function turnWinner(pChoice,cChoice){
 		for(index=0;index<6;index++){
-			if(setWinner[1]){
-				let winner=cChoice;
+			if(pChoice==0&&cChoice==1){
+				winner=cChoice;
 				alert("Round Winner: CPU");
-				return winner;
 			}
-			else if(setWinner[2]){
-				let winner=pChoice;
-				alert("Round Winner: Player");
-				return winner;
+			else if(pChoice==0&&cChoice==2){
+				winner=pChoice;
+				alert("Round Winner: You");
 			}
-			else if(setWinner[3]){
-				let winner=pChoice;
-				alert("Round Winner: Player");
-				return winner;
+			else if(pChoice==1&&cChoice==0){
+				winner=pChoice;
+				alert("Round Winner: You");
 			}
-			else if(setWinner[4]){
-				let winner=cChoice;
+			else if(pChoice==1&&cChoice==2){
+				winner=cChoice;
 				alert("Round Winner: CPU");
-				return winner;
 			}
-			else if(setWinner[5]){
-				let winner=pChoice;
-				alert("Round Winner: Player");
-				return winner;
+			else if(pChoice==2&&cChoice==1){
+				winner=pChoice;
+				alert("Round Winner: You");
 			}
-			else if(setWinner[6]){
-				let winner=cChoice;
+			else if(pChoice==2&&cChoice==0){
+				winner=cChoice;
 				alert("Round Winner: CPU");
-				return winner;
 			}
+			return winner;
 		}
 	}
 	
 	function updateScore(winner){
 		if(winner==pChoice){
-			scoreKeeper[index++,0];
+			scoreKeeper[index++,index];
 		}
 		else{
-			scoreKeeper[0,index++];
+			scoreKeeper[index,index++];
 		}
 		return scoreKeeper[index];
 	}
 	
 	function gameWinner(){
-		if(scoreKeeper[index]==scoreKeeper[index,0]){
+		if(scoreKeeper[index]>[index]){
 			alert("You win!");
 		}
-		else{
+		else if(scoreKeeper[index]<[index]){
 			alert("Computer wins!");
 		}
 	}
